@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col-50" layout="row" layout-align="center center">
+    <healthcare-patients-list
+      [patients]="patients$ | async"
+      (selected)="selectPatient($event)"
+      (deleted)="deletePatient($event)"
+    ></healthcare-patients-list>
+  </div>
+  <div class="col-50" layout="row" layout-align="center center">
+    <healthcare-patient-details
+      [form]="form"
+      [patient]="selectedPatient | async"
+      (saved)="savePatient($event)"
+      (cancelled)="cancel()"
+    ></healthcare-patient-details>
+  </div>
+</div>

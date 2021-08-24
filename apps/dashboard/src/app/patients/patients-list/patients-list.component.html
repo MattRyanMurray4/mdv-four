@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> <h1>Select a Patient</h1></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item
+        *ngFor="let patient of patients"
+        (click)="selected.emit(patient)"
+        class="mat-list-item"
+      >
+        <h1 matLine>{{ patient.name }}</h1>
+        <p matLine>{{ patient.insurance }}</p>
+        <button
+          mat-icon-button
+          (click)="deleted.emit(patient); $event.stopImmediatePropagation()"
+        >
+          <mat-icon *ngIf="!readonly">delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@healthcare/api-interfaces';
 
 @Component({
   selector: 'healthcare-root',
@@ -8,6 +6,9 @@ import { Message } from '@healthcare/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  title = 'HealthCare-Application';
+  links = [
+    { path: '/', icon: 'home', title: 'Login' },
+    { path: 'patients', icon: 'view_list', title: 'Patients-List' },
+  ];
 }

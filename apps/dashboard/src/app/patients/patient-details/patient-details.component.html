@@ -1,0 +1,95 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title *ngIf="currentPatient.id; else createNew">
+      <h1>Update {{ originalName }}</h1>
+    </mat-card-title>
+    <ng-template #createNew>
+      <h1>Create a New Patient</h1>
+    </ng-template>
+  </mat-card-header>
+  <form
+    [formGroup]="form"
+    #formDirective="ngForm"
+    (ngSubmit)="saveForm(formDirective)"
+  >
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          type="text"
+          name="name"
+        />
+        <mat-error *ngIf="form.get('name')">Required Field</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Insurance</mat-label>
+        <input
+          matInput
+          placeholder="Insurance"
+          formControlName="insurance"
+          type="text"
+          name="insurance"
+        />
+        <mat-error *ngIf="form.get('insurance')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Birthday</mat-label>
+        <input
+          matInput
+          placeholder="Birthday"
+          formControlName="birthday"
+          type="text"
+          name="birthday"
+        />
+        <mat-error *ngIf="form.get('birthday')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Diagnosis</mat-label>
+        <input
+          matInput
+          placeholder="Diagnosis"
+          formControlName="diagnosis"
+          type="text"
+          name="diagnosis"
+        />
+        <mat-error *ngIf="form.get('diagnosis')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Tx Interventions</mat-label>
+        <input
+          matInput
+          placeholder="Tx Interventions"
+          formControlName="txInterventions"
+          type="text"
+          name="txInterventions"
+        />
+        <mat-error *ngIf="form.get('txInterventions')"
+          >Required Field</mat-error
+        >
+      </mat-form-field>
+      <section class="full-width">
+        <mat-label>
+          Tx-Episodes: {{ form.get('txEpisode')?.value }} / 60
+        </mat-label>
+        <mat-slider
+          formControlName="txEpisode"
+          min="0"
+          max="60"
+          class="full-width"
+          thumbLabel
+          tickInterval="1"
+        ></mat-slider>
+      </section>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-button [disabled]="form.invalid">
+        {{ currentPatient.id ? 'Submit' : 'Create' }}
+      </button>
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

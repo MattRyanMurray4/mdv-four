@@ -14,8 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "strictPropertyInitialization": false,
     "paths": {
-      "@healthcare/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@healthcare/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@healthcare/core-data": ["libs/core-data/src/index.ts"],
+      "@healthcare/core-state": ["libs/core-state/src/index.ts"],
+      "@healthcare/material": ["libs/material/src/index.ts"],
+      "@healthcare/theme": ["libs/theme/src/index.ts"],
+      "@healthcare/ui-library": ["libs/ui-library/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
